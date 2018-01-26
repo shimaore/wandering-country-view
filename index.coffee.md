@@ -17,7 +17,7 @@ Ensure backward-compatibility between patches and minors!
 - Do not change the set returned for a given query.
 - Only extend values (this is only possible if values are objects).
 
-    app = "#{app}-#{app_version}"
+    app = "#{app_name}-#{app_version}"
 
 Current views
 -------------
