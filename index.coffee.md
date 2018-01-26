@@ -25,7 +25,7 @@ Current views
     couchapp = (options) ->
       options ?= {}
       extra = ''
-      extra = "var normalize_account = #{normalize_account};" if options.normalize_account?
+      extra = "var normalize_account = #{options.normalize_account};" if options.normalize_account?
 
       _id: "_design/#{app}-#{app_version}"
       version: version
