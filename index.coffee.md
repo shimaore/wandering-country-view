@@ -1,4 +1,4 @@
-    app = 'wandering-country'
+    app_name = 'wandering-country'
 
 This is the version number for the Couch app / design document itself.
 Notice that it doesn't contain a patch-level indication (because we
@@ -17,6 +17,8 @@ Ensure backward-compatibility between patches and minors!
 - Do not change the set returned for a given query.
 - Only extend values (this is only possible if values are objects).
 
+    app = "#{app}-#{app_version}"
+
 Current views
 -------------
 
@@ -27,7 +29,7 @@ Current views
       extra = ''
       extra = "var normalize_account = #{options.normalize_account};" if options.normalize_account?
 
-      _id: "_design/#{app}-#{app_version}"
+      _id: "_design/#{app}"
       version: version
       language: 'javascript'
       views:
