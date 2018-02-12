@@ -31,7 +31,7 @@ Compare with windy-moon's `validate_type`.
         value = {}
         value[type] = the_value
         value.value = the_value
-        value.disabled = disabled
+        value.disabled = disabled ? false
 
         {account} = doc
         account = normalize_account account if account? and normalize_account?
@@ -89,18 +89,17 @@ Not all endpoints have domains; some only have an IP address.
               send [{user_database},type], value
 
             doc.groups?.forEach (group) ->
-              send [{domain},{group},0], value
+              send [{number_domain},{group},0], value
 
             doc.allowed_groups?.forEach (group) ->
-              send [{domain},{group},1], value
+              send [{number_domain},{group},1], value
 
             doc.queues?.forEach (queue) ->
-              send [{domain},{queue}], value
+              send [{number_domain},{queue}], value
 
             doc.skills?.forEach (skill) ->
-              send [{domain},{skill}], value
+              send [{number_domain},{skill}], value
 
-            {endpoint}
             if endpoint?
               send [{endpoint},type], value
 
