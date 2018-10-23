@@ -58,6 +58,15 @@ Compare with windy-moon's `validate_type`.
           when 'number_domain'
             yes
 
+          when 'list'
+            {number,calling_number,whitelist,blacklist,suspicious} = doc
+            whitelist ?= false
+            blacklist ?= false
+            suspicious ?= false
+            if number? and calling_number? and (whitelist or blacklist or suspicious)
+              local_number = number
+              send [{local_number},type], calling_number
+
           when 'endpoint'
 
 Not all endpoints have domains; some only have an IP address.
