@@ -1,6 +1,6 @@
 {
   "name": "wandering-country-view",
-  "version": "2.0.4",
+  "version": "2.1.0",
   "description": "View for wandering-country",
   "main": "index.js",
   "browser": "index.bundle.js",
