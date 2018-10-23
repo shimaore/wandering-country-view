@@ -65,7 +65,7 @@ Compare with windy-moon's `validate_type`.
             suspicious ?= false
             if number? and calling_number? and (whitelist or blacklist or suspicious)
               local_number = number
-              send [{local_number},type], calling_number
+              send [{local_number},type], {calling_number,whitelist,blacklist,suspicious}
 
           when 'endpoint'
 
