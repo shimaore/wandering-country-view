@@ -20,6 +20,18 @@ This is appropriate when building lists of applicable, active options.
         {type} = doc
         return unless type?
 
+Some records do not have a `[type]` field.
+
+        switch type
+          when 'list'
+            {number,calling_number,whitelist,blacklist,suspicious} = doc
+            whitelist ?= false
+            blacklist ?= false
+            suspicious ?= false
+            if number? and calling_number? and (whitelist or blacklist or suspicious)
+              local_number = number
+              send [{local_number},type], {calling_number,whitelist,blacklist,suspicious}
+
         the_value = doc[type]
         return unless the_value?
 
@@ -57,15 +69,6 @@ Compare with windy-moon's `validate_type`.
 
           when 'number_domain'
             yes
-
-          when 'list'
-            {number,calling_number,whitelist,blacklist,suspicious} = doc
-            whitelist ?= false
-            blacklist ?= false
-            suspicious ?= false
-            if number? and calling_number? and (whitelist or blacklist or suspicious)
-              local_number = number
-              send [{local_number},type], {calling_number,whitelist,blacklist,suspicious}
 
           when 'endpoint'
 
