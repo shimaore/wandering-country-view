@@ -29,7 +29,7 @@ Some records do not have a `[type]` field.
             blacklist ?= false
             suspicious ?= false
             rev = doc._rev
-            if number? and calling_number? and (whitelist or blacklist or suspicious)
+            if number? and calling_number? # and (whitelist or blacklist or suspicious)
               local_number = number
               send [{local_number},type], {calling_number,whitelist,blacklist,suspicious,rev}
 
