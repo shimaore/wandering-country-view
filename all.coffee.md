@@ -28,9 +28,10 @@ Some records do not have a `[type]` field.
             whitelist ?= false
             blacklist ?= false
             suspicious ?= false
+            rev = doc._rev
             if number? and calling_number? and (whitelist or blacklist or suspicious)
               local_number = number
-              send [{local_number},type], {calling_number,whitelist,blacklist,suspicious}
+              send [{local_number},type], {calling_number,whitelist,blacklist,suspicious,rev}
 
         the_value = doc[type]
         return unless the_value?
