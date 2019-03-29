@@ -71,6 +71,9 @@ Compare with windy-moon's `validate_type`.
           when 'number_domain'
             yes
 
+          when 'location'
+            yes
+
           when 'endpoint'
 
 Not all endpoints have domains; some only have an IP address.
