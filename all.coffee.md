@@ -91,6 +91,10 @@ Not all endpoints have domains; some only have an IP address.
             if location?
               send [{location},type], value
 
+            {via} = doc
+            if via?
+              send [{via},type], value
+
           when 'local-number'
 
             l = the_value.match /^([^@]+)@(.+)$/
