@@ -20,6 +20,8 @@ This is appropriate when building lists of applicable, active options.
         {type} = doc
         return unless type?
 
+        rev = doc._rev
+
 Some records do not have a `[type]` field.
 
         switch type
@@ -28,7 +30,6 @@ Some records do not have a `[type]` field.
             whitelist ?= false
             blacklist ?= false
             suspicious ?= false
-            rev = doc._rev
             if number? and calling_number? # and (whitelist or blacklist or suspicious)
               local_number = number
               send [{local_number},type], {calling_number,whitelist,blacklist,suspicious,rev}
@@ -45,6 +46,7 @@ Compare with windy-moon's `validate_type`.
         value[type] = the_value
         value.value = the_value
         value.disabled = disabled ? false
+        value.rev = rev
 
         {account} = doc
         account = normalize_account account if account? and normalize_account?
